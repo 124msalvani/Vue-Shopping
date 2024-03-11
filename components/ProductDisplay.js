@@ -7,51 +7,95 @@ app.component("product-display", {
     },
     template:
     /*html*/
-    `<div class="product-display">
-    <div class="product-container">
-      <div class="product-image" :class="{ 'out-of-stock-img': !inStock}">
+    `
+    <div class="container-fluid product-display">
+    <div class="product-container row border-bottom">
+      <div class="product-image col-6" :class="{ 'out-of-stock-img': !inStock}">
         <img :src="image" alt="Green Socks">
       </div>
       <div class="product-info">
-        <h1>{{ title }}</h1>
+        <h1 class="display-1">{{ title }}</h1>
+        
+
+        <p>Visit <a :href="url">VueMastery.com</a> for more</p>
+
          
-         <p v-if="inStock">In Stock</p>
+         <h3 class="display-5" v-if="inStock">In Stock</h3>
          <p v-else-if="inStock <= 10 && inStock > 0">Almost sold out!</p>
          <p v-else>Out of Stock</p>
          <!--Another way of conditional showing
           <p v-show="inStock">In Stock</p>
         -->
          <p v-show="onSale"> {{title}} is on sale!</p>
+         <div class="row">
+        <h1>Color: {{ "variant.id" }}</h1>
+
+         <div v-for="(variant, index) in variants" :key="variant.id" 
+        @mouseover="updateVariant(index)" class="col-6 color-circle"
+         :style="{ backgroundColor: variant.color }"></div>
+
+         </div>
 
          <p>Shipping: {{shipping}} </p>
          <!-- Details Prop Here -->
 
 
-         <p>{{ description }}</p>
-         <ul><li v-for="detail in details">{{ detail}}</li>
-        </ul>
-       
-        <div v-for="(variant, index) in variants" :key="variant.id" 
-        @mouseover="updateVariant(index)" class="color-circle"
-         :style="{ backgroundColor: variant.color }"></div>
         
-        <ul>
-        <li v-for="size in sizes"> {{ size }} </li> 
-        </ul>
+       
+        
+        
+        
 
-       <button class="button" :class="{ disabledButton: !inStock}" :disabled="!inStock" @click="addToCart"> Add to Cart </button>
-       <button class="button" :class="{ disabledButton: !inStock}" :disabled="!inStock" @click="removeFromCart"> Remove Item </button>
+        <div class="row">
+        <label for="sizes">Size:</label>
+        <div class="col">
+          
+          <select id="sizes" v-model="sizes">
+            <option> {{ sizes[0] }}</option>
+            <option>{{ sizes[1] }}</option>
+            <option>{{ sizes[2] }}</option>
+            <option>{{ sizes[3] }}</option>
+            <option>{{ sizes[4] }}</option>
+            
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button class="button" :class="{ disabledButton: !inStock}" :disabled="!inStock" @click="addToCart"> Add to Cart </button>
+
+        </div>
+        <div class="col">
+          <button class="button" :class="{ disabledButton: !inStock}" :disabled="!inStock" @click="removeFromCart"> Remove Item </button>
+
+        </div>
+      </div>
 
 
-         <p>Visit <a :href="url">VueMastery.com</a> for more</p>
+
          
       </div>
       
     </div>
-    <review-list :reviews="reviews"></review-list>
 
-    <review-form @review-submitted="addReview"></review-form>
-</div>`,
+    <div class="container">
+      <div class="row">
+        <div class="col"><h3>{{ description }}</h3>
+          <ul><li v-for="detail in details">{{ detail}}</li>
+         </ul></div>
+          <div class="col">    <review-list :reviews="reviews"></review-list>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <review-form @review-submitted="addReview"></review-form>
+
+        </div>
+      </div>
+    </div>
+    
+
+    </div>`,
 data () {
     return{
         cart:0,
@@ -64,8 +108,8 @@ data () {
         onSale: true,
         details: ["50% cotton", "30% wool", "20% polyester"],
         variants:[
-            { id: 2234, color: 'green', image: "./assets/images/socks_green.jpg", quantity: 50},
-            { id: 2235, color: 'blue', image: "./assets/images/socks_blue.jpg", quantity: 0}
+            { id: 2234, color: 'green', image: "./assets/img/socks_green.jpg", quantity: 50},
+            { id: 2235, color: 'blue', image: "./assets/img/socks_blue.jpg", quantity: 0}
         ],
         sizes: ["xsmall", "small", "medium", "large", "xlarge"],
         reviews:[]
