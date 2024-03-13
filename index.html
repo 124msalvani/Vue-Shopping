@@ -9,16 +9,22 @@
     <link rel="stylesheet" href="./assets/styles.css" />
     <!-- Import Vue.js -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
   </head>
   <body>
     <div id="app">
-      <div class="nav-bar"></div>
+      <div class="nav-bar">
+        <div class="cart">Cart({{ cart.length }})</div>
+      </div>
 
       
     
 
-      <div class="cart">Cart({{ cart.length }})</div>
+      
       <product-display :premium="premium" @add-to-cart="updateCart" @remove-from-cart="removeCart"></product-display>
+      
     </div>
 
 

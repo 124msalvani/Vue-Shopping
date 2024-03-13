@@ -7,20 +7,21 @@ app.component("product-display", {
     },
     template:
     /*html*/
-    `
-    <div class="container-fluid product-display">
-    <div class="product-container row border-bottom">
-      <div class="product-image col-6" :class="{ 'out-of-stock-img': !inStock}">
-        <img :src="image" alt="Green Socks">
-      </div>
-      <div class="product-info">
-        <h1 class="display-1">{{ title }}</h1>
+    `<div class="container-fluid product-display">
+    
+      <div class="product-container row border-bottom">
+         <div class="product-image col-3" :class="{ 'out-of-stock-img': !inStock}">
+           <img :src="image" alt="Green Socks">
+         </div>
+
+      <div class="product-info col">
+        <h1 class="display-1">{{ title }}</h1> 
         
 
-        <p>Visit <a :href="url">VueMastery.com</a> for more</p>
+        <p style="font-weight: 600;" >Visit <a :href="url">VueMastery.com</a> for more</p>
 
          
-         <h3 class="display-5" v-if="inStock">In Stock</h3>
+         <h2 v-if="inStock">In Stock</h2>
          <p v-else-if="inStock <= 10 && inStock > 0">Almost sold out!</p>
          <p v-else>Out of Stock</p>
          <!--Another way of conditional showing
@@ -28,7 +29,7 @@ app.component("product-display", {
         -->
          <p v-show="onSale"> {{title}} is on sale!</p>
          <div class="row">
-        <h1>Color: {{ "variant.id" }}</h1>
+        <h3 style="display:inline;">Color: </h3><h2 style="display:inline;"> Green</h2> /**ASK MS MCDONALD FOR HELP */
 
          <div v-for="(variant, index) in variants" :key="variant.id" 
         @mouseover="updateVariant(index)" class="col-6 color-circle"
@@ -59,18 +60,16 @@ app.component("product-display", {
             
           </select>
         </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <button class="button" :class="{ disabledButton: !inStock}" :disabled="!inStock" @click="addToCart"> Add to Cart </button>
-
+      
+        <div class="row pt-5">
+          <div class="col">
+           <button type="button" class="btn btn-secondary btn-lg" :class="{ disabledButton: !inStock}" :disabled="!inStock" @click="addToCart"> Add to Cart </button>
+          </div>
+          <div class="col">
+            <button  type="button" class="btn btn-secondary btn-lg" :class="{ disabledButton: !inStock}" :disabled="!inStock" @click="removeFromCart"> Remove Item </button>
+          </div>
         </div>
-        <div class="col">
-          <button class="button" :class="{ disabledButton: !inStock}" :disabled="!inStock" @click="removeFromCart"> Remove Item </button>
-
         </div>
-      </div>
-
 
 
          
@@ -83,14 +82,15 @@ app.component("product-display", {
         <div class="col"><h3>{{ description }}</h3>
           <ul><li v-for="detail in details">{{ detail}}</li>
          </ul></div>
-          <div class="col">    <review-list :reviews="reviews"></review-list>
+          <div class="col">    
+          <review-list :reviews="reviews"></review-list>
           </div>
       </div>
       <div class="row">
-        <div class="col">
+        
           <review-form @review-submitted="addReview"></review-form>
 
-        </div>
+        
       </div>
     </div>
     
@@ -101,12 +101,14 @@ data () {
         cart:0,
         brand: "Vue Mastery",
         product: "Socks",
-        description: "Fluffy warm socks!",
+        description: "About This Item",
         selectedVariant: 0,
         url: "https://www.vuemastery.com",
         inventory: 0,
         onSale: true,
-        details: ["50% cotton", "30% wool", "20% polyester"],
+        details: ["One size fits most: suit for US men's sock size10-13/shoe size 6-12.Package includes: 10 pairs socks.",
+         "These low cut socks' air-permeability and moisture wicking performance will keep your feet dry fresh and odor free all day long.", 
+         "Mens ankle socks reinforced heel and toe for enhanced durability in high-wear areas in improve product life. Extra thick padding can absorb impact and reduce friction."],
         variants:[
             { id: 2234, color: 'green', image: "./assets/img/socks_green.jpg", quantity: 50},
             { id: 2235, color: 'blue', image: "./assets/img/socks_blue.jpg", quantity: 0}
