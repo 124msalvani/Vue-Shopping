@@ -1,13 +1,21 @@
 app.component('review-form',{
     template:
     /*html*/
-    `<form class="review-form" @submit.prevent="onSubmit">
-    <h3>Leave a review</h3>
-    <label for="name">Name:</label>
-    <input id="name" v-model="name">
+    `<form class="review-form container" @submit.prevent="onSubmit">
+    <h3> Leave a review</h3>
+    <div class="row">
+    <div class="col">
+      <label for="name">Name:</label>
+      <input id="name" v-model="name">
+    </div>
+  </div>
 
+  <div class="row">
+  <div class="col">
     <label for="review">Review:</label>      
     <textarea id="review" v-model="review"></textarea>
+  </div>
+</div>
 
     <label for="rating">Rating:</label>
     <select id="rating" v-model.number="rating">

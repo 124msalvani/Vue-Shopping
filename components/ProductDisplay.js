@@ -52,11 +52,11 @@ app.component("product-display", {
         <div class="col">
           
           <select id="sizes" v-model="sizes">
-            <option> {{ sizes[0] }}</option>
-            <option>{{ sizes[1] }}</option>
-            <option>{{ sizes[2] }}</option>
-            <option>{{ sizes[3] }}</option>
-            <option>{{ sizes[4] }}</option>
+            <option>xsmall</option>
+            <option>small</option>
+            <option>medium</option>
+            <option>large</option>
+            <option>xlarge</option>
             
           </select>
         </div>
@@ -87,9 +87,9 @@ app.component("product-display", {
           </div>
       </div>
       <div class="row">
-        
+        <div class="col">
           <review-form @review-submitted="addReview"></review-form>
-
+        </div>
         
       </div>
     </div>
@@ -114,7 +114,9 @@ data () {
             { id: 2235, color: 'blue', image: "./assets/img/socks_blue.jpg", quantity: 0}
         ],
         sizes: ["xsmall", "small", "medium", "large", "xlarge"],
-        reviews:[]
+        reviews:[
+          { name: "Tracy", review: 'Amazing socks! The green ones are so fluffy!', rating: 5, reccomend: true},
+        ]
     }
 },
 methods:{
