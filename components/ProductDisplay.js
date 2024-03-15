@@ -16,7 +16,26 @@ app.component("product-display", {
 
       <div class="product-info col">
         <h1 class="display-1">{{ title }}</h1> 
-        
+        <div class="row">
+        <div class="col">
+          <span 
+               class="mb-5 permaStar checked">★
+          </span>
+          <span 
+               class="mb-5 permaStar checked">★
+          </span>
+          <span 
+               class="mb-5 permaStar checked">★
+          </span>
+          <span 
+               class="mb-5 permaStar checked">★
+          </span>
+          <span 
+               class="mb-5 permaStar">★
+          </span> 
+          <h5 class="d-inline">4.0 Stars</h5>
+        </div>
+      </div>
 
         <p style="font-weight: 600;" >Visit <a :href="url">VueMastery.com</a> for more</p>
 
@@ -29,21 +48,24 @@ app.component("product-display", {
         -->
          <p v-show="onSale"> {{title}} is on sale!</p>
          <div class="row">
-        <h3 style="display:inline;">Color: </h3><h2 style="display:inline;"> Green</h2> /**ASK MS MCDONALD FOR HELP */
+        <h3 class="d-inline w-15">Color: </h3><h2 v-if="colorText" class="d-inline w-15"> Green</h2> 
+        <h2 v-else class="d-inline w-15"> Blue</h2> 
 
+        <div class="row">
          <div v-for="(variant, index) in variants" :key="variant.id" 
         @mouseover="updateVariant(index)" class="col-6 color-circle"
          :style="{ backgroundColor: variant.color }"></div>
-
+         </div>
          </div>
 
+         <div class="row pt-3">
          <p>Shipping: {{shipping}} </p>
+         </div>
          <!-- Details Prop Here -->
 
-
+         
         
        
-        
         
         
 
@@ -152,6 +174,14 @@ computed:{
         }
         return 2.99
     },
+    colorText(){
+      if(this.variants[this.selectedVariant].color == 'green') {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
   
 }
 })

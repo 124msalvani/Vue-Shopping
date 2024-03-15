@@ -18,13 +18,25 @@ app.component('review-form',{
 </div>
 
     <label for="rating">Rating:</label>
-    <select id="rating" v-model.number="rating">
-      <option>5</option>
-      <option>4</option>
-      <option>3</option>
-      <option>2</option>
-      <option>1</option>
-    </select>
+    <div id="rating" class="row star-row">
+    <div class="col star-rating">
+      <span onclick="gfg(1)"
+          class="star">★
+    </span>
+    <span onclick="gfg(2)"
+          class="star">★
+    </span>
+    <span onclick="gfg(3)"
+          class="star">★
+    </span>
+    <span onclick="gfg(4)"
+          class="star">★
+    </span>
+    <span onclick="gfg(5)"
+          class="star">★
+    </span>
+    </div>
+  </div>
 
      <input id="rec" type="checkbox" v-model="recommend"> <label for="rec" > Would you reccomend this product? </label>
 
@@ -55,6 +67,7 @@ app.component('review-form',{
 
       }
       this.$emit('review-submitted', productReview)
+     
 
       name: ''
       review: ''

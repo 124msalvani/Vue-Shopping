@@ -22,27 +22,32 @@ const app = Vue.createApp({
 })
 
 
-let stars = document.querySelectorAll(".star-rating span");
-let products = document.querySelectorAll(".star-rating");
-let star_rating = [];
+// To access the stars
+let stars = 
+    document.getElementsByClassName("star");
+let output = 
+    document.getElementById("output");
  
-for(let star of stars){
-   star.addEventListener("click", function(){
-      
-      let children = star.parentElement.children;
-      for(let child of children){
-         if(child.getAttribute("data-clicked")){
-            return false;	
-         }
-      }
-      
-      this.setAttribute("data-clicked","true");
-      let rating = this.dataset.rating;
-      let dataStars = {
-         "rating": rating,
-      }
-      star_rating.push(dataStars);
-      console.log(dataStars);
-      console.log(rating);
-   });
+// Funtion to update rating
+function gfg(n) {
+    remove();
+    for (let i = 0; i < n; i++) {
+        if (n == 1) cls = "one";
+        else if (n == 2) cls = "two";
+        else if (n == 3) cls = "three";
+        else if (n == 4) cls = "four";
+        else if (n == 5) cls = "five";
+        stars[i].className = "star " + cls;
+    }
+    console.log("Rating is: " + n + "/5")
+ 
+}
+ 
+// To remove the pre-applied styling
+function remove() {
+    let i = 0;
+    while (i < 5) {
+        stars[i].className = "star";
+        i++;
+    }
 }

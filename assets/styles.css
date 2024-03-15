@@ -6,6 +6,10 @@ body {
     font-family: "Inter", sans-serif;
 
   }
+
+  .w-15{
+    width: 15%;
+  }
   
   .border-bottom{
     border-bottom: 2px solid black;
@@ -165,35 +169,16 @@ body {
   }
   
 /* Star Review Styles */
-.star-row{
-  display: inline-block;
+.star {
+  cursor: pointer;
 }
-  .star-rating{
-    display: flex;
-   flex-direction: row-reverse;
-    user-select: none;
-  }
-
-  .star-rating span{
-    cursor: pointer;
-    transition: color .2s;
-    font-size: 50px;
- }
- .star-rating span:hover{
-    color: orange;
- }
- .star-rating span:hover ~ span{
-    color: orange;
- }
- .star-rating span[data-clicked]{
-    color: orange;
- }
- .star-rating span[data-clicked] ~ span{
-    color: orange;
- }
  
-  
-  @media only screen and (max-width: 600px) {
+.one, .two, .three, .four, .five, .checked {
+  color: orange
+}
+ 
+
+  @media only screen and (max-width: 800px) {
     .container {
       flex-direction: column;
     }
