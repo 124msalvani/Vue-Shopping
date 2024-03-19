@@ -10,37 +10,43 @@ app.component('review-form',{
     </div>
   </div>
 
-  <div class="row">
+<div class="row">
   <div class="col">
     <label for="review">Review:</label>      
     <textarea id="review" v-model="review"></textarea>
   </div>
 </div>
 
-    <label for="rating">Rating:</label>
-    <div id="rating" class="row star-row">
-    <div class="col star-rating">
-      <span @click="gfg(1)"
-          class="star" value="1">★
-    </span>
-    <span @click="gfg(2)"
-          class="star"  value="2">★
-    </span>
-    <span @click="gfg(3)"
-          class="star"  value="3">★
-    </span>
-    <span @click="gfg(4)"
-          class="star"  value="4">★
-    </span>
-    <span @click="gfg(5)"
-          class="star"  value="5">★
-    </span>
-    </div>
-  </div>
-
-     <input id="rec" type="checkbox" v-model="recommend"> <label for="rec" > Would you reccomend this product? </label>
-
-    <input class="button" type="submit" value="Submit"> 
+<div class="row">
+        <div class="col">
+                <label for="rating">Rating:</label>
+            <div id="rating" class="row star-row">
+            <div class="col star-rating">
+              <span @click="gfg(1)"
+                  class="star" value="1">★
+            </span>
+            <span @click="gfg(2)"
+                  class="star"  value="2">★
+            </span>
+            <span @click="gfg(3)"
+                  class="star"  value="3">★
+            </span>
+            <span @click="gfg(4)"
+                  class="star"  value="4">★
+            </span>
+            <span @click="gfg(5)"
+                  class="star"  value="5">★
+            </span>
+            </div>
+          </div>
+        </div>
+      
+      
+        <div class="col pt-3">
+          <input id="rec" type="checkbox" v-model="recommend"> <label for="rec" > Would you reccomend this product? </label>
+        </div>
+       </div>
+    <input class="button btn btn-primary btn-lg btn-block" type="submit" value="Submit">
 
   </form>`,
   data(){

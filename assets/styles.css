@@ -28,6 +28,11 @@ body {
     text-align: center;
     cursor: pointer;
   }
+
+
+  .btn-primary{
+    font-size: 25px;
+  }
   
   .cart {
     margin: 8px 100px;
@@ -108,8 +113,6 @@ body {
   .out-of-stock-img {
     opacity:0.5
   }
-  
-  
   
   .product-display, .product-container {
     margin-bottom: 1.5rem;
@@ -194,6 +197,10 @@ body {
     .review-form {
       width: 100%;
     }
+    .d-inline{
+      display: block;
+    }
+
   }
   
   #rec{
