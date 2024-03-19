@@ -20,19 +20,19 @@ app.component('review-form',{
     <label for="rating">Rating:</label>
     <div id="rating" class="row star-row">
     <div class="col star-rating">
-      <span onclick="gfg(1)"
+      <span @click="gfg(1)"
+          class="star" value='1'>★
+    </span>
+    <span @click="gfg(2)"
           class="star">★
     </span>
-    <span onclick="gfg(2)"
+    <span @click="gfg(3)"
           class="star">★
     </span>
-    <span onclick="gfg(3)"
+    <span @click="gfg(4)"
           class="star">★
     </span>
-    <span onclick="gfg(4)"
-          class="star">★
-    </span>
-    <span onclick="gfg(5)"
+    <span @click="gfg(5)"
           class="star">★
     </span>
     </div>
@@ -73,10 +73,31 @@ app.component('review-form',{
       review: ''
       rating: null
       reccomend: null
-       document,getElementsByClassName("review-form")[0].reset;
+       document.getElementsByClassName("review-form")[0].reset;
 
     
 
-    }
+    },
+        gfg(n){
+            // Funtion to update rating
+            this.remove();
+            for (let i = 0; i < n; i++) {
+                if (n == 1) cls = "one";
+                else if (n == 2) cls = "two";
+                else if (n == 3) cls = "three";
+                else if (n == 4) cls = "four";
+                else if (n == 5) cls = "five";
+                stars[i].className = "star " + cls;
+            }
+            console.log("Rating is: " + n + "/5")
+        },
+        remove(){
+            // To remove the pre-applied styling
+            let i = 0;
+            while (i < 5) {
+                stars[i].className = "star";
+                i++;
+            }
+        }
   }
 })
